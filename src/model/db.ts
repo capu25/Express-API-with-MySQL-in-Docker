@@ -1,20 +1,22 @@
-import mysql from "mysql2";
+import mysql from "mysql2/promise";
 
 // --- DB CONNECTION SPEC ---
-const db = mysql.createConnection({
-  host: "localhost", //OR WATHEVER
-  user: "USER",
-  password: "PASSWORD",
-  database: "DB_NAME",
+const db = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "root",
+  database: "localBackend",
 });
 
-// --- CONNECTION LOGIC ---
-db.connect((err) => {
-  if (err) {
-    console.error("CONNECTION ERROR: ", err);
-    return;
+// --- Test the Connection ---
+(async () => {
+  try {
+    const connection = await db.getConnection();
+    console.log("CONNECTED TO CONTAINER");
+    connection.release(); // Release the connection back to the pool
+  } catch (err) {
+    console.error("DATABASE CONNECTION ERROR:", err);
   }
-  console.log("CONNECTED TO CONTAINER");
-});
+})();
 
 export default db;
