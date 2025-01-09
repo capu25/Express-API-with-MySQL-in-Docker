@@ -25,8 +25,8 @@ This project is a RESTful API built using Node.js, Express, and TypeScript. It c
 ### **1. Clone the Repository**
 
 ```
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/capu25/Express-API-with-MySQL-in-Docker.git
+cd Express-API-with-MySQL-in-Docker
 ```
 
 ### **2. Install dependencies**
